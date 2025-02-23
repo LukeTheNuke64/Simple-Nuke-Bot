@@ -6,7 +6,7 @@ This is a simple Discord bot that can be used to destroy a server in under 10 se
 
 1. Clone the repository:
 ```
-git clone https://github.com/your-username/discord-nuker-bot.git
+git clone https://github.com/LukeTheNuke64/Simple-Nuke-Bot.git
 ```
 
 2. Install the required dependencies:
