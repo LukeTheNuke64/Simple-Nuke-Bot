@@ -1,4 +1,4 @@
-# Discord Nuker Bot
+# Simple Discord Nuke Bot
 
 This is a simple Discord bot that can be used to destroy a server in under 10 seconds. 
 
