@@ -1,12 +1,7 @@
 import discord, asyncio
 from discord.ext import commands
 
-intents = discord.Intents.default()
-intents.typing = False
-intents.presences = False
-intents.message_content = True  
-
-bot = commands.Bot(command_prefix="!", intents=intents)
+bot = commands.Bot(command_prefix="!", intents=discord.Intents.all())
 
 # Customize the bot here
 BOT_TOKEN = "YOUR TOKEN HERE"
