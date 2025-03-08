@@ -28,6 +28,7 @@ python main.py
 The bot has the following commands:
 
 - `!delete`: Deletes all channels in the server.
+- `!ban`: Bans all members in a server (excluding the bot and whitelisted users).
 - `!start`: Deletes all channels, creates new channels, and spams a message in each channel.
 - `!forcestop`: Stops the bot by shutting it down.
 
