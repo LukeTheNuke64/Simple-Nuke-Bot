@@ -34,7 +34,7 @@ async def ban(ctx):
 
     for task in tasks:
         await task
-        await asyncio.sleep(5)  
+        await asyncio.sleep(0.5)  
 
 async def ban_member(member):
     try:
